@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+.ant-layout {
+  height: 100%;
+}
+
+/* LAYOUT */
+
+.layout_sider {
+  background-color: darkgray;
+}
+
+.layout_header {
+  background-color: darkgray;
+}
+
+/* SEARCH */
+.search {
+  display: flex;
+  margin-top: 15px;
+}
+
+.search_input {
+}
+
+.search_submite {
+}
+
+/* MODAL */
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
