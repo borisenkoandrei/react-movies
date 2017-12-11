@@ -1,14 +1,23 @@
-import { SAVE_API_KEY } from "../const/const";
+import { SIGN_IN, SIGN_OUT, CHECK_API_KEY_SUCCESS } from "../const/const";
 
 const initialState = {
   apiKey: "",
-  moviesIsFetching: false
+  loginStatus: false
 };
 
 export default function settings(state = initialState, action) {
   switch (action.type) {
-    case SAVE_API_KEY:
-      return Object.assign({}, state, { apiKey: action.apiKey });
+    case CHECK_API_KEY_SUCCESS:
+      return Object.assign(
+        {},
+        state,
+        { apiKey: action.apiKey },
+        { loginStatus: true }
+      );
+    case SIGN_IN:
+      return Object.assign({}, state, { loginStatus: true });
+    case SIGN_OUT:
+      return Object.assign({}, state, { loginStatus: false });
     default:
       return state;
   }

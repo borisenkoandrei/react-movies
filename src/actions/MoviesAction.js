@@ -4,28 +4,46 @@ import {
   GET_MOVIES_FAILURE
 } from "../const/const";
 
-function getMoviesRequest() {
+function getMoviesRequest(request) {
   return {
-    type: GET_MOVIES_REQUEST
+    type: GET_MOVIES_REQUEST,
+    request
   };
 }
 
-function getMoviesSuccess() {}
+function getMoviesSuccess(searchResult, totalResult) {
+  return {
+    type: GET_MOVIES_SUCCESS,
+    searchResult,
+    totalResult
+  };
+}
 
-function getMoviesFailure() {}
+function getMoviesFailure(error) {
+  return {
+    type: GET_MOVIES_FAILURE,
+    error
+  };
+}
 
-export function getMovies(request, apiKey) {
+export function getMovies(request, apiKey, page = 1) {
   return function(dispatch) {
-    dispatch(getMoviesRequest());
-    return fetch(`http://www.omdbapi.com/?apikey=${apiKey}&i=${request}`)
+    dispatch(getMoviesRequest(request));
+    return fetch(
+      `http://www.omdbapi.com/?apikey=${apiKey}&s=${request}&page=${page}`
+    )
       .then(function(response) {
         return response.json();
       })
       .then(function(movies) {
-        console.log(movies);
+        if (movies.Error) {
+          throw new Error(movies.Error);
+        }
+        dispatch(getMoviesSuccess(movies.Search, movies.totalResults));
       })
       .catch(function(error) {
         console.log(error);
+        dispatch(getMoviesFailure(error.message));
       });
   };
 }
