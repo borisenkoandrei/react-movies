@@ -11,11 +11,12 @@ function getMoviesRequest(request) {
   };
 }
 
-function getMoviesSuccess(searchResult, totalResult) {
+function getMoviesSuccess(currentPage, totalPages, movies) {
   return {
     type: GET_MOVIES_SUCCESS,
-    searchResult,
-    totalResult
+    currentPage,
+    totalPages,
+    movies
   };
 }
 
@@ -35,11 +36,13 @@ export function getMovies(request, apiKey, page = 1) {
       .then(function(response) {
         return response.json();
       })
-      .then(function(movies) {
-        if (movies.Error) {
-          throw new Error(movies.Error);
+      .then(function(response) {
+        if (response.Error) {
+          throw new Error(response.Error);
         }
-        dispatch(getMoviesSuccess(movies.Search, movies.totalResults));
+        dispatch(
+          getMoviesSuccess(page, response.totalResults, response.Search)
+        );
       })
       .catch(function(error) {
         console.log(error);

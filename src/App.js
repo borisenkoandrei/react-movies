@@ -5,7 +5,7 @@ import "./css/App.css";
 
 // COMPONENT
 import SignIn from "./components/SignIn/SignIn";
-import SearchForm from "./components/SearchForm";
+import SearchForm from "./containers/SearchForm";
 import { Layout } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 

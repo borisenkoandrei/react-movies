@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Modal from "../Modal/Modal";
 import { Input, Button } from "antd";
 
-import { signIn, signOut } from "../../actions/SettingsActions";
+import { signIn, signOut, checkApiKey } from "../../actions/SettingsActions";
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -22,9 +22,9 @@ class SignIn extends React.Component {
   componentDidMount() {
     if (!localStorage.getItem("API_KEY")) {
       this.openModal();
+    } else {
+      this.props.checkApiKey(localStorage.getItem("API_KEY"));
     }
-    this.props.signIn();
-    this.props.saveApiKey(localStorage.getItem("API_KEY"));
   }
 
   openModal() {
@@ -38,8 +38,7 @@ class SignIn extends React.Component {
   signIn(event) {
     event.preventDefault();
     localStorage.setItem("API_KEY", event.target.key.value);
-    this.props.saveApiKey(event.target.key.value);
-    this.props.signIn();
+    this.props.checkApiKey(event.target.key.value);
     this.closeModal();
   }
 
@@ -72,14 +71,15 @@ class SignIn extends React.Component {
 const mapStateToProps = state => {
   return {
     apiKey: state.settings.apiKey,
-    loginStatus: state.settings.loginStatus
+    loginStatus: state.settings.login
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     signIn: () => dispatch(signIn()),
-    signOut: () => dispatch(signOut())
+    signOut: () => dispatch(signOut()),
+    checkApiKey: apiKey => dispatch(checkApiKey(apiKey))
   };
 };
 

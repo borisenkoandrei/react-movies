@@ -31,9 +31,10 @@ function checkApiKeySuccess(apiKey) {
   };
 }
 
-function checkApiKeyFailure() {
+function checkApiKeyFailure(error) {
   return {
-    type: CHECK_API_KEY_FAILURE
+    type: CHECK_API_KEY_FAILURE,
+    error
   };
 }
 
@@ -42,16 +43,16 @@ export function checkApiKey(apiKey) {
     dispatch(checkApiKeyRequest());
     return fetch(`http://www.omdbapi.com/?apikey=${apiKey}&s=1`)
       .then(function(response) {
-        return response.json();
+        dispatch(checkApiKeyRequest());
+        if (response.status !== 200) {
+          throw new Error(response.statusText);
+        }
+        return response;
       })
       .then(function(response) {
-        if (response.Error) {
-          throw new Error(response.Error);
-        }
         dispatch(checkApiKeySuccess(apiKey));
       })
       .catch(function(error) {
-        console.log(error);
         dispatch(checkApiKeyFailure(error.message));
       });
   };

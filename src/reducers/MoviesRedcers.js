@@ -27,12 +27,19 @@ function moviesReducer(state = initialState, action) {
       return Object.assign(
         {},
         state,
-        { movies: action.searchResult },
-        { totalPages: action.totalResult },
-        { moviesIsFetching: false }
+        { movies: action.movies },
+        { currentPage: action.currentPage },
+        { totalPages: action.totalPages },
+        { moviesIsFetching: false },
+        { error: "" }
       );
     case GET_MOVIES_FAILURE:
-      return Object.assign({}, state, { error: action.error });
+      return Object.assign({}, state, {
+        error: action.error,
+        currentPage: "",
+        totalPages: "",
+        movies: []
+      });
     default:
       return state;
   }
