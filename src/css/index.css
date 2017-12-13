@@ -46,3 +46,49 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/* MOVIE LIST */
+.film-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* MOVIE CARD */
+.film-card {
+  width: 300px;
+  /* height: 300px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 2px darkgrey;
+  border-radius: 5px;
+}
+
+.film-card_title {
+  display: inline-block;
+  padding: 0 5px 0 5px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.film-card_poster {
+  text-align: center;
+}
+.film-card_img {
+  height: 350px;
+  max-width: 270px;
+}
+
+.film-card_footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

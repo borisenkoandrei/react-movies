@@ -6,6 +6,7 @@ import "./css/App.css";
 // COMPONENT
 import SignIn from "./components/SignIn/SignIn";
 import SearchForm from "./containers/SearchForm";
+import MovieList from "./containers/MovieList";
 import { Layout } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -19,7 +20,9 @@ class App extends Component {
             <SearchForm />
             <SignIn />
           </Header>
-          <Content>Content</Content>
+          <Content>
+            <MovieList />
+          </Content>
           <Footer>Footer</Footer>
         </Layout>
       </Layout>

@@ -5,7 +5,6 @@ import {
 } from "../const/const";
 
 const initialState = {
-  searchRequest: "",
   currentPage: 1,
   totalPages: "",
   moviesIsFetching: false,

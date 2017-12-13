@@ -1,7 +1,7 @@
 import {
   GET_MOVIES_REQUEST,
   GET_MOVIES_SUCCESS,
-  GET_MOVIES_FAILURE
+  GET_MOVIES_FAILURE,
 } from "../const/const";
 
 function getMoviesRequest(request) {
@@ -27,11 +27,13 @@ function getMoviesFailure(error) {
   };
 }
 
-export function getMovies(request, apiKey, page = 1) {
+export function getMovies(request, apiKey, type, year, page = 1) {
   return function(dispatch) {
     dispatch(getMoviesRequest(request));
     return fetch(
-      `http://www.omdbapi.com/?apikey=${apiKey}&s=${request}&page=${page}`
+      `http://www.omdbapi.com/?apikey=${apiKey}&s=${request}&page=${
+        page
+      }&type=${type}&y=${year}`
     )
       .then(function(response) {
         return response.json();
