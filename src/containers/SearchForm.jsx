@@ -1,6 +1,6 @@
 import React from "react";
 
-import { getMovies } from "../actions/MoviesAction";
+import { getMovies, changeType, changeYear } from "../actions/MoviesAction";
 
 import { connect } from "react-redux";
 import { Input, Button, Select, DatePicker } from "antd";
@@ -10,17 +10,14 @@ const { MonthPicker } = DatePicker;
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      type: "",
-      year: "",
-      searchRequest: "",
-      currentPage: 1,
-      totalPages: ""
-    };
 
     this.submitHandler = this.submitHandler.bind(this);
     this.changeTypeHandler = this.changeTypeHandler.bind(this);
     this.changeYearHandler = this.changeYearHandler.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
   }
 
   submitHandler(event) {
@@ -29,13 +26,14 @@ class SearchForm extends React.Component {
     this.props.getMovies(
       request,
       this.props.apiKey,
-      this.state.type,
-      this.state.year
+      this.props.type,
+      this.props.year,
+      this.props.currentPage
     );
   }
 
   changeTypeHandler(value) {
-    this.setState({ type: value });
+    this.props.changeType(value);
   }
 
   changeYearHandler(date) {
@@ -44,7 +42,7 @@ class SearchForm extends React.Component {
     } else {
       date = "";
     }
-    this.setState({ year: date });
+    this.props.changeYear(date);
   }
 
   render() {
@@ -74,14 +72,19 @@ class SearchForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    apiKey: state.settings.apiKey
+    apiKey: state.settings.apiKey,
+    year: state.movie.year,
+    type: state.movie.type,
+    currentPage: state.movie.currentPage
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getMovies: (request, apiKey, type, year) =>
-      dispatch(getMovies(request, apiKey, type, year))
+      dispatch(getMovies(request, apiKey, type, year)),
+    changeType: type => dispatch(changeType(type)),
+    changeYear: year => dispatch(changeYear(year))
   };
 };
 

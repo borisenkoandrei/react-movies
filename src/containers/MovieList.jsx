@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import MovieCard from "../components/MovieCard/MovieCard";
 
+import { getDescription } from "../actions/MovieDescriptionAction";
+
 class MovieList extends React.Component {
   constructor(props) {
     super(props);
@@ -12,6 +14,8 @@ class MovieList extends React.Component {
   }
 
   render() {
+    let getDescription = this.props.getDescription;
+    let apiKey = this.props.apiKey;
     return (
       <div className="film-list">
         {this.props.movies.map(function(movie) {
@@ -23,6 +27,8 @@ class MovieList extends React.Component {
               type={movie.Type}
               year={movie.Year}
               id={movie.imdbID}
+              apiKey={apiKey}
+              getDescription={getDescription}
             />
           );
         })}
@@ -33,8 +39,15 @@ class MovieList extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    apiKey: state.settings.apiKey,
     movies: state.movie.movies
   };
 };
 
-export default connect(mapStateToProps)(MovieList);
+const mapDispatchToProps = dispatch => {
+  return {
+    getDescription: (apiKey, id) => dispatch(getDescription(apiKey, id))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieList);

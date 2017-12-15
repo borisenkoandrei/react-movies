@@ -7,6 +7,7 @@ import "./css/App.css";
 import SignIn from "./components/SignIn/SignIn";
 import SearchForm from "./containers/SearchForm";
 import MovieList from "./containers/MovieList";
+import PagePicker from "./components/PagePicker/PagePicker2";
 import { Layout } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -23,7 +24,9 @@ class App extends Component {
           <Content>
             <MovieList />
           </Content>
-          <Footer>Footer</Footer>
+          <Footer>
+            <PagePicker />
+          </Footer>
         </Layout>
       </Layout>
     );

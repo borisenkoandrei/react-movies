@@ -1,15 +1,21 @@
 import {
   GET_MOVIES_REQUEST,
   GET_MOVIES_SUCCESS,
-  GET_MOVIES_FAILURE
+  GET_MOVIES_FAILURE,
+  CHANGE_CURRENT_PAGE,
+  CHANGE_TYPE,
+  CHANGE_YEAR
 } from "../const/const";
 
 const initialState = {
-  currentPage: 1,
+  searchRequest: "",
+  currentPage: "",
   totalPages: "",
   moviesIsFetching: false,
   error: "",
-  movies: []
+  movies: [],
+  type: "",
+  year: ""
 };
 
 function moviesReducer(state = initialState, action) {
@@ -33,12 +39,15 @@ function moviesReducer(state = initialState, action) {
         { error: "" }
       );
     case GET_MOVIES_FAILURE:
-      return Object.assign({}, state, {
-        error: action.error,
-        currentPage: "",
-        totalPages: "",
-        movies: []
+      return Object.assign({}, initialState, {
+        error: action.error
       });
+    case CHANGE_CURRENT_PAGE:
+      return Object.assign({}, state, { currentPage: action.page });
+    case CHANGE_TYPE:
+      return Object.assign({}, state, { type: action.movieType });
+    case CHANGE_YEAR:
+      return Object.assign({}, state, { year: action.year });
     default:
       return state;
   }
