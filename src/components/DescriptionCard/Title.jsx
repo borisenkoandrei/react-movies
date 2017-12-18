@@ -1,10 +1,12 @@
 import React from "react";
 
-export default function Title({ Title }) {
+export default function Title({ title }) {
+  if (title === "N/A") {
+    return null;
+  }
   return (
     <div className="description-item">
-      <div className="description-item_title">Title</div>
-      <div className="description-item_value">{Title}</div>
+      <div className="description-item_value">{title}</div>
     </div>
   );
 }

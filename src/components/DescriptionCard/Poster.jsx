@@ -1,10 +1,12 @@
 import React from "react";
 
-export default function Poster({ Poster }) {
+export default function Poster({ poster }) {
+  if (poster === "N/A") {
+    return null;
+  }
   return (
     <div className="description-item">
-      <div className="description-item_title">"Poster"</div>
-      <div className="description-item_value">{Poster}</div>
+      <img src={poster} alt="Poster" />
     </div>
   );
 }

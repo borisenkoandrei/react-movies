@@ -92,3 +92,10 @@ body {
   justify-content: space-evenly;
   align-items: center;
 }
+
+
+/* MOVIE_DESCRIPTION */
+
+.movie-description{
+  background-color: lightgray;
+}

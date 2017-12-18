@@ -6,6 +6,7 @@ import Title from "./Title";
 import Year from "./Year";
 import Type from "./MovieType";
 import Modal from "../Modal/Modal";
+import MovieDescription from "../../containers/MovieDescriptionCard";
 
 class MovieCard extends React.Component {
   constructor(props) {
@@ -14,12 +15,17 @@ class MovieCard extends React.Component {
       modalIsOpen: false
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  handleClick() {
-    this.setState({ modalIsOpen: true });
+  openModal() {
     this.props.getDescription(this.props.apiKey, this.props.id);
+    this.setState({ modalIsOpen: true });
+  }
+
+  closeModal() {
+    this.setState({ modalIsOpen: false });
   }
 
   render() {
@@ -34,10 +40,14 @@ class MovieCard extends React.Component {
         <div className="film-card_footer">
           <Year year={this.props.year} />
           <Type type={this.props.type} />
-          <Button onClick={this.handleClick}>Подробне</Button>
+          <Button onClick={this.openModal}>Подробне</Button>
         </div>
         <Modal isOpen={this.state.modalIsOpen}>
-          <div />
+          <MovieDescription
+            apiKey={this.props.apiKey}
+            movieId={this.props.id}
+          />
+          <Button onClick={this.closeModal}>Close</Button>
         </Modal>
       </div>
     );

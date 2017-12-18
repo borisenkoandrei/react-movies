@@ -46,7 +46,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getDescription: (apiKey, id) => dispatch(getDescription(apiKey, id))
+    getDescription: (apiKey, movieId) =>
+      dispatch(getDescription(apiKey, movieId))
   };
 };
 

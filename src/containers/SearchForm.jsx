@@ -22,6 +22,7 @@ class SearchForm extends React.Component {
 
   submitHandler(event) {
     event.preventDefault();
+
     let request = event.target.search_input.value;
     this.props.getMovies(
       request,

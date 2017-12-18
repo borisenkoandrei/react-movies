@@ -17,7 +17,7 @@ export default function MovieDescription(state = initialState, action) {
       return Object.assign(
         {},
         state,
-        { ...action.response },
+        { description: { ...action.response } },
         {
           requesting: false
         }
