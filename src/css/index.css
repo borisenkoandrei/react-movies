@@ -93,9 +93,44 @@ body {
   align-items: center;
 }
 
-
 /* MOVIE_DESCRIPTION */
 
-.movie-description{
+.movie-description {
   background-color: lightgray;
+  padding: 20px;
+  width: 1000px;
+  border-radius: 5px;
+}
+
+.movie-description_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.movie-description_content {
+  display: flex;
+  flex-direction: row;
+}
+
+.movie-description_poster {
+  margin-right: 20px;
+}
+
+.movie-description_description {
+  height: 550px;
+  overflow: auto;
+}
+
+.description-item {
+  display: table-row;
+}
+
+.description-item_title {
+  display: table-cell;
+  width: 90px;
+}
+
+.description-item_value {
+  display: table-cell;
 }

@@ -17,6 +17,7 @@ class MovieCard extends React.Component {
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.addToFavorite = this.addToFavorite.bind(this);
   }
 
   openModal() {
@@ -28,11 +29,16 @@ class MovieCard extends React.Component {
     this.setState({ modalIsOpen: false });
   }
 
+  addToFavorite() {
+    this.props.addToFavorite(this.props.id, this.props.title, this.props.year);
+  }
+
   render() {
     return (
       <div className="film-card">
         <div className="film-card_header">
           <Title title={this.props.title} />
+          <Button onClick={this.addToFavorite}>Добавить</Button>
         </div>
         <div className="film-card_poster">
           <Poster poster={this.props.poster} title={this.props.title} />
@@ -45,9 +51,8 @@ class MovieCard extends React.Component {
         <Modal isOpen={this.state.modalIsOpen}>
           <MovieDescription
             apiKey={this.props.apiKey}
-            movieId={this.props.id}
+            close={this.closeModal}
           />
-          <Button onClick={this.closeModal}>Close</Button>
         </Modal>
       </div>
     );

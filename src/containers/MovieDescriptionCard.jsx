@@ -1,6 +1,7 @@
 import React from "react";
 
 import { connect } from "react-redux";
+import { Button } from "antd";
 
 import Actors from "../components/DescriptionCard/Actors";
 import Awards from "../components/DescriptionCard/Awards";
@@ -35,6 +36,7 @@ class MovieDescription extends React.Component {
       <div className="movie-description">
         <div className="movie-description_header">
           <Title title={this.props.description.Title} />
+          <Button onClick={this.props.close}>Закрыть</Button>
         </div>
         <div className="movie-description_content">
           <div className="movie-description_poster">

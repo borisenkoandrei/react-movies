@@ -8,6 +8,7 @@ import SignIn from "./components/SignIn/SignIn";
 import SearchForm from "./containers/SearchForm";
 import MovieList from "./containers/MovieList";
 import PagePicker from "./components/PagePicker/PagePicker2";
+import Favorite from "./containers/Favorite";
 import { Layout } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -15,7 +16,9 @@ class App extends Component {
   render() {
     return (
       <Layout>
-        <Sider className="layout_sider">Sider</Sider>
+        <Sider className="layout_sider">
+          <Favorite />
+        </Sider>
         <Layout>
           <Header className="layout_header">
             <SearchForm />

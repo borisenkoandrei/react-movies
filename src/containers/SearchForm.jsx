@@ -82,8 +82,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getMovies: (request, apiKey, type, year) =>
-      dispatch(getMovies(request, apiKey, type, year)),
+    getMovies: (request, apiKey, type, year, page) =>
+      dispatch(getMovies(request, apiKey, type, year, page)),
     changeType: type => dispatch(changeType(type)),
     changeYear: year => dispatch(changeYear(year))
   };
