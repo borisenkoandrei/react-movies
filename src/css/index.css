@@ -23,9 +23,17 @@ body {
 }
 
 /* SEARCH */
+
+.search-block {
+  display: flex;
+  line-height: initial;
+  margin-top: 15px;
+}
+
 .search {
   display: flex;
-  margin-top: 15px;
+  margin-right: 20px;
+  flex-grow: 1;
 }
 
 .search_input {

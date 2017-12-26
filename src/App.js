@@ -21,8 +21,10 @@ class App extends Component {
         </Sider>
         <Layout>
           <Header className="layout_header">
-            <SearchForm />
-            <SignIn />
+            <div className="search-block">
+              <SearchForm />
+              <SignIn />
+            </div>
           </Header>
           <Content>
             <MovieList />

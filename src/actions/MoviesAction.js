@@ -1,4 +1,5 @@
 import {
+  GET_MOVIES,
   GET_MOVIES_REQUEST,
   GET_MOVIES_SUCCESS,
   GET_MOVIES_FAILURE,
@@ -7,14 +8,24 @@ import {
   CHANGE_YEAR
 } from "../const/const";
 
-function getMoviesRequest(request) {
+export function getMovies({ request, apiKey, movieType, year, page }) {
   return {
-    type: GET_MOVIES_REQUEST,
-    request
+    type: GET_MOVIES,
+    request,
+    apiKey,
+    movieType,
+    year,
+    page
   };
 }
 
-function getMoviesSuccess(currentPage, totalPages, movies) {
+export function getMoviesRequest() {
+  return {
+    type: GET_MOVIES_REQUEST
+  };
+}
+
+export function getMoviesSuccess(currentPage, totalPages, movies) {
   return {
     type: GET_MOVIES_SUCCESS,
     currentPage,
@@ -23,36 +34,10 @@ function getMoviesSuccess(currentPage, totalPages, movies) {
   };
 }
 
-function getMoviesFailure(error) {
+export function getMoviesFailure(error) {
   return {
     type: GET_MOVIES_FAILURE,
     error
-  };
-}
-
-export function getMovies(request, apiKey, type, year, page = 1) {
-  return function(dispatch) {
-    dispatch(getMoviesRequest(request));
-    return fetch(
-      `http://www.omdbapi.com/?apikey=${apiKey}&s=${request}&page=${
-        page
-      }&type=${type}&y=${year}`
-    )
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(response) {
-        if (response.Error) {
-          throw new Error(response.Error);
-        }
-        dispatch(
-          getMoviesSuccess(page, +response.totalResults, response.Search)
-        );
-      })
-      .catch(function(error) {
-        console.log(error);
-        dispatch(getMoviesFailure(error.message));
-      });
   };
 }
 

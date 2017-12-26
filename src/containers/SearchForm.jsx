@@ -1,6 +1,10 @@
 import React from "react";
 
-import { getMovies, changeType, changeYear } from "../actions/MoviesAction";
+import {
+  getMoviesRequest,
+  changeType,
+  changeYear
+} from "../actions/MoviesAction";
 
 import { connect } from "react-redux";
 import { Input, Button, Select, DatePicker } from "antd";
@@ -83,7 +87,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getMovies: (request, apiKey, type, year, page) =>
-      dispatch(getMovies(request, apiKey, type, year, page)),
+      dispatch(getMoviesRequest(request, apiKey, type, year, page)),
     changeType: type => dispatch(changeType(type)),
     changeYear: year => dispatch(changeYear(year))
   };

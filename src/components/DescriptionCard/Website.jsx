@@ -7,7 +7,9 @@ export default function Website({ website }) {
   return (
     <div className="description-item">
       <div className="description-item_title">Website</div>
-      <a href={website}>Website</a>
+      <a target="_blank" href={website}>
+        Website
+      </a>
     </div>
   );
 }

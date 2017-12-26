@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Pagination } from "antd";
 
-import { getMovies } from "../../actions/MoviesAction";
+import { getMoviesRequest } from "../../actions/MoviesAction";
 
 class PagePicker2 extends React.Component {
   constructor(props) {
@@ -29,10 +29,10 @@ class PagePicker2 extends React.Component {
   }
 
   render() {
-    if(!this.props.totalPage || this.props.totalPage===1){
-        return null
+    if (!this.props.totalPage || this.props.totalPage === 1) {
+      return null;
     }
-    
+
     return (
       <div className="pagination">
         <Pagination
@@ -61,7 +61,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getMovies: (request, apiKey, type, year, page) =>
-      dispatch(getMovies(request, apiKey, type, year, page))
+      dispatch(getMoviesRequest(request, apiKey, type, year, page))
   };
 };
 

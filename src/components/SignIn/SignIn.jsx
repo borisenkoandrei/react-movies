@@ -77,7 +77,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signIn: () => dispatch(signIn()),
+    signIn: apiKey => dispatch(signIn(apiKey)),
     signOut: () => dispatch(signOut()),
     checkApiKey: apiKey => dispatch(checkApiKey(apiKey))
   };
