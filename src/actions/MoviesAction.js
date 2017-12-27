@@ -8,7 +8,7 @@ import {
   CHANGE_YEAR
 } from "../const/const";
 
-export function getMovies({ request, apiKey, movieType, year, page }) {
+export function getMovies(request, apiKey, movieType, year, page) {
   return {
     type: GET_MOVIES,
     request,

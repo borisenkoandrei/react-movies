@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { getDescription } from "../actions/MovieDescriptionAction";
+import { getDescriptionRequest } from "../actions/MovieDescriptionAction";
 import { deleteFromFavorite } from "../actions/FavoriteAction";
 
 import Modal from "../components/Modal/Modal";
@@ -20,7 +20,7 @@ class FavoriteList extends React.Component {
   }
 
   openModal(movieId) {
-    this.props.getDescription(this.props.apiKey, movieId);
+    this.props.getDescriptionRequest(this.props.apiKey, movieId);
     this.setState({ modalIsOpen: true });
   }
 
@@ -64,7 +64,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getDescription: (apiKey, movieId) =>
-      dispatch(getDescription(apiKey, movieId)),
+      dispatch(getDescriptionRequest(apiKey, movieId)),
     deleteFromFavorite: movieId => dispatch(deleteFromFavorite(movieId))
   };
 };

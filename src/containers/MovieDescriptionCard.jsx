@@ -30,7 +30,11 @@ import Year from "../components/DescriptionCard/Year";
 class MovieDescription extends React.Component {
   render() {
     if (this.props.requesting) {
-      return <div>Загрузка</div>;
+      return (
+        <div className="movie-description">
+          <div>Загрузка...</div>
+        </div>
+      );
     }
     return (
       <div className="movie-description">

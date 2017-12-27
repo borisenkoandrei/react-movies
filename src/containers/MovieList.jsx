@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import MovieCard from "../components/MovieCard/MovieCard";
 
-import { getDescription } from "../actions/MovieDescriptionAction";
+import { getDescriptionRequest } from "../actions/MovieDescriptionAction";
 import { addToFavorite } from "../actions/FavoriteAction";
 
 class MovieList extends React.Component {
@@ -15,7 +15,7 @@ class MovieList extends React.Component {
   }
 
   render() {
-    let getDescription = this.props.getDescription;
+    let getDescription = this.props.getDescriptionRequest;
     let addToFavorite = this.props.addToFavorite;
     let apiKey = this.props.apiKey;
     return (
@@ -49,8 +49,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getDescription: (apiKey, movieId) =>
-      dispatch(getDescription(apiKey, movieId)),
+    getDescriptionRequest: (apiKey, movieId) =>
+      dispatch(getDescriptionRequest(apiKey, movieId)),
     addToFavorite: (movieId, movieTitle, movieYear) =>
       dispatch(addToFavorite(movieId, movieTitle, movieYear))
   };

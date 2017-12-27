@@ -11,7 +11,7 @@ export default function Ratings({ ratings }) {
         <ul>
           {ratings.map(function(item) {
             return (
-              <li>
+              <li key={item.Value}>
                 {item.Source} - {item.Value}
               </li>
             );

@@ -1,7 +1,7 @@
 import React from "react";
 
 import {
-  getMoviesRequest,
+  getMovies,
   changeType,
   changeYear
 } from "../actions/MoviesAction";
@@ -87,7 +87,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getMovies: (request, apiKey, type, year, page) =>
-      dispatch(getMoviesRequest(request, apiKey, type, year, page)),
+      dispatch(getMovies(request, apiKey, type, year, page)),
     changeType: type => dispatch(changeType(type)),
     changeYear: year => dispatch(changeYear(year))
   };
