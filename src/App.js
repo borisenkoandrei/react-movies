@@ -10,6 +10,7 @@ import MovieList from "./containers/MovieList";
 import PagePicker from "./components/PagePicker/PagePicker2";
 import Favorite from "./containers/Favorite";
 import { Layout } from "antd";
+
 const { Header, Footer, Sider, Content } = Layout;
 
 class App extends Component {

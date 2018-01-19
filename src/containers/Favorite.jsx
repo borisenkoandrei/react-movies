@@ -20,7 +20,7 @@ class FavoriteList extends React.Component {
   }
 
   openModal(movieId) {
-    this.props.getDescriptionRequest(this.props.apiKey, movieId);
+    this.props.getDescription(this.props.apiKey, movieId);
     this.setState({ modalIsOpen: true });
   }
 

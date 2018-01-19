@@ -1,15 +1,12 @@
 import React from "react";
 
-import {
-  getMovies,
-  changeType,
-  changeYear
-} from "../actions/MoviesAction";
+import { getMovies, changeType, changeYear } from "../actions/MoviesAction";
 
 import { connect } from "react-redux";
-import { Input, Button, Select, DatePicker } from "antd";
+import { Input, Button, Select } from "antd";
+import YearPicker from "react-year-picker";
+
 const Option = Select.Option;
-const { MonthPicker } = DatePicker;
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -42,11 +39,6 @@ class SearchForm extends React.Component {
   }
 
   changeYearHandler(date) {
-    if (date) {
-      date = date.year();
-    } else {
-      date = "";
-    }
     this.props.changeYear(date);
   }
 
@@ -65,8 +57,7 @@ class SearchForm extends React.Component {
           <Option value="series">Series</Option>
           <Option value="episode">Episode</Option>
         </Select>
-        <MonthPicker format="YYYY" onChange={this.changeYearHandler} />
-
+        <YearPicker onChange={this.changeYearHandler} />
         <Button className="search_submite" htmlType="submit">
           Поиск
         </Button>
