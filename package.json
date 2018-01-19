@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "babel": "^6.23.0",
-    "babel-plugin-import": "^1.6.2"
+    "babel-plugin-import": "^1.6.2",
+    "babel-polyfill": "^6.26.0"
   }
 }
